@@ -14,7 +14,7 @@ function splitToArray(textAlphaLower) {
   return textAlphaLower.split(/\s+/);
 }
 
-// TODO
+// TODO do it yourself geezer
 // function makeSingular() {}
 
 function makeUnique(words) {
