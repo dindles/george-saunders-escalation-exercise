@@ -1,6 +1,82 @@
-import { pluralize, checkWord } from "./pluralize-dindles.mjs";
+import { isPlural, makeSingular } from "./pluralize-dindles.mjs";
 
-let plural_word = pluralize("cow");
-let x = checkWord("cow");
-console.log("this is the result of calling pluralize:", plural_word);
-console.log("this is the result of calling checkWord:", x);
+const nouns = [
+  "apple",
+  "bananas",
+  "orange",
+  "peaches",
+  "grapes",
+  "lemon",
+  "pear",
+  "pineapple",
+  "watermelon",
+  "kiwi",
+  "strawberry",
+  "blueberry",
+  "raspberry",
+  "cherry",
+  "mango",
+  "avocado",
+  "tomatoes",
+  "potatoes",
+  "carrots",
+  "onion",
+  "garlic",
+  "pepper",
+  "cucumbers",
+  "lettuce",
+  "broccoli",
+  "cauliflower",
+  "spinach",
+  "celery",
+  "pumpkin",
+  "zucchini",
+  "eggplant",
+  "corn",
+  "peas",
+  "beans",
+  "rice",
+  "pasta",
+  "bread",
+  "cheese",
+  "yogurt",
+  "milk",
+  "butter",
+  "chicken",
+  "beef",
+  "pork",
+  "fish",
+  "shrimp",
+  "lobster",
+  "crab",
+  "egg",
+  "bacon",
+  "sausage",
+  "ham",
+  "turkey",
+  "duck",
+  "goose",
+  "sheep",
+  "cow",
+  "horse",
+  "dog",
+  "cat",
+  "bird",
+  "fish",
+  "insect",
+  "tree",
+  "flower",
+  "grass",
+  "mountain",
+  "river",
+  "ocean",
+];
+
+for (let i = 0; i < nouns.length; i++) {
+  if (isPlural(nouns[i])) {
+    console.log(nouns[i]);
+    let single = makeSingular(nouns[i]);
+    console.log(single);
+    console.log(i);
+  }
+}

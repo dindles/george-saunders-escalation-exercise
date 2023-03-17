@@ -12,13 +12,21 @@ var uncountables = {};
 var irregularPlurals = {};
 var irregularSingles = {};
 
+export function isPlural(word) {
+  return pluralize.isPlural(word);
+}
+
+export function makeSingular(word) {
+  return pluralize.singular(word);
+}
+
 /**
  * Sanitize a pluralization rule to a usable regular expression.
  *
  * @param  {(RegExp|string)} rule
  * @return {RegExp}
  */
-export function sanitizeRule(rule) {
+function sanitizeRule(rule) {
   if (typeof rule === "string") {
     return new RegExp("^" + rule + "$", "i");
   }
@@ -34,7 +42,7 @@ export function sanitizeRule(rule) {
  * @param  {string}   token
  * @return {Function}
  */
-export function restoreCase(word, token) {
+function restoreCase(word, token) {
   // Tokens are an exact match.
   if (word === token) return token;
 
@@ -60,7 +68,7 @@ export function restoreCase(word, token) {
  * @param  {Array}  args
  * @return {string}
  */
-export function interpolate(str, args) {
+function interpolate(str, args) {
   return str.replace(/\$(\d{1,2})/g, function (match, index) {
     return args[index] || "";
   });
@@ -73,7 +81,7 @@ export function interpolate(str, args) {
  * @param  {Array}  rule
  * @return {string}
  */
-export function replace(word, rule) {
+function replace(word, rule) {
   return word.replace(rule[0], function (match, index) {
     var result = interpolate(rule[1], arguments);
 
@@ -93,7 +101,7 @@ export function replace(word, rule) {
  * @param  {Array}    rules
  * @return {string}
  */
-export function sanitizeWord(token, word, rules) {
+function sanitizeWord(token, word, rules) {
   // Empty string or doesn't need fixing.
   if (!token.length || uncountables.hasOwnProperty(token)) {
     return word;
@@ -119,7 +127,7 @@ export function sanitizeWord(token, word, rules) {
  * @param  {Array}    rules
  * @return {Function}
  */
-export function replaceWord(replaceMap, keepMap, rules) {
+function replaceWord(replaceMap, keepMap, rules) {
   return function (word) {
     // Get the correct token and case restoration functions.
     var token = word.toLowerCase();
@@ -142,7 +150,7 @@ export function replaceWord(replaceMap, keepMap, rules) {
 /**
  * Check if a word is part of the map.
  */
-export function checkWord(replaceMap, keepMap, rules, bool) {
+function checkWord(replaceMap, keepMap, rules, bool) {
   return function (word) {
     var token = word.toLowerCase();
 
@@ -162,7 +170,7 @@ export function checkWord(replaceMap, keepMap, rules, bool) {
  * @return {string}
  */
 
-export function pluralize(word, count, inclusive) {
+function pluralize(word, count, inclusive) {
   var pluralized =
     count === 1 ? pluralize.singular(word) : pluralize.plural(word);
 
