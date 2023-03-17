@@ -1,3 +1,5 @@
+import { PluModule } from "./pluralize-dindles.mjs";
+
 const textarea = document.getElementById("story-text");
 textarea.addEventListener("input", updateMain);
 
