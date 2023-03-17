@@ -1,3 +1,5 @@
+import { isPlural, returnSingular } from "./pluralize-dindles.mjs";
+
 const textarea = document.getElementById("story-text");
 textarea.addEventListener("input", updateMain);
 
@@ -14,8 +16,17 @@ function splitToArray(textAlphaLower) {
   return textAlphaLower.split(/\s+/);
 }
 
-// TODO
-// function makeSingular() {}
+function makeSingular(words) {
+  const wordsSingular = [];
+  for (let i = 0; i < words.length; i++) {
+    if (isPlural(words[i])) {
+      wordsSingular.push(returnSingular(words[i]));
+    } else {
+      wordsSingular.push(words[i]);
+    }
+  }
+  return wordsSingular;
+}
 
 function makeUnique(words) {
   const uniqueWords = new Set(words);
@@ -56,8 +67,8 @@ function updateMain() {
   const rawText = getStoryInput();
   const textAlphaLower = makeAlphaLower(rawText);
   const words = splitToArray(textAlphaLower);
-  // const wordsSingular = makeSingular(words);
-  const uniqueWords = makeUnique(words);
+  const wordsSingular = makeSingular(words);
+  const uniqueWords = makeUnique(wordsSingular);
   const wordCount = getWordCount(words);
   displayWordCount(wordCount);
   const uniqueWordCount = getUniqueWordCount(uniqueWords);
