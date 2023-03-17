@@ -16,7 +16,7 @@ export function isPlural(word) {
   return pluralize.isPlural(word);
 }
 
-export function makeSingular(word) {
+export function returnSingular(word) {
   return pluralize.singular(word);
 }
 
