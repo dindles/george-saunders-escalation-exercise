@@ -67,6 +67,7 @@ function updateMain() {
   const rawText = getStoryInput();
   const textAlphaLower = makeAlphaLower(rawText);
   const words = splitToArray(textAlphaLower);
+  console.log(words);
   const wordsSingular = makeSingular(words);
   const uniqueWords = makeUnique(wordsSingular);
   const wordCount = getWordCount(words);
