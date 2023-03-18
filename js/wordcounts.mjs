@@ -1,8 +1,19 @@
 import { isPlural, returnSingular } from "./pluralize-dindles.mjs";
 
 const textarea = document.getElementById("story-text");
+
+// workaround - unable to convince regex in splitToArray to
+// register when a new line isn't preceded by a space.
+textarea.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    textarea.value += " ";
+  }
+});
+
+// get string input from HTML
 textarea.addEventListener("input", updateMain);
 
+// updateMain calls the following functions:
 function getStoryInput() {
   return textarea.value.trim();
 }
@@ -12,6 +23,7 @@ function makeAlphaLower(rawText) {
   return alphaOnly.toLowerCase();
 }
 
+// TODO - get this bugger to split on a newline with no space
 function splitToArray(textAlphaLower) {
   return textAlphaLower.split(/\s+/);
 }
