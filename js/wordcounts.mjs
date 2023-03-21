@@ -41,7 +41,7 @@ function makeSingular(words) {
 }
 
 function makeUnique(words) {
-  const uniqueWords = new Set(words);
+  const uniqueWords = new Set(words.sort());
   if (uniqueWords.has("")) {
     uniqueWords.delete("");
   }
