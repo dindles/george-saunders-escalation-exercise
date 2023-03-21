@@ -29,6 +29,10 @@ body {
   color: var(--clr-white);
 }
 
+.introduction {
+  font-size: 1rem;
+}
+
 .go-button.neon {
   font-family: "Courier New", Courier, monospace;
 }
@@ -79,6 +83,10 @@ main {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+.hidden {
+  display: none;
 }
 
 .story-input {
