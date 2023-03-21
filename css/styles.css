@@ -18,6 +18,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  /* border: solid 1px; */
 }
 
 /* ==========
@@ -43,6 +44,14 @@ textarea {
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
   color: var(--clr-light);
+}
+
+.word-count {
+  font-size: 2rem;
+}
+
+.unique-word-count {
+  font-size: 2rem;
 }
 
 footer {
@@ -103,18 +112,42 @@ main {
 textarea {
   padding: 1rem;
   max-width: 600px;
-  flex-basis: 600px;
-  flex-grow: 4;
 }
 
+/* word count grid */
+
 .word-counts {
-  /* display: grid; */
+  display: grid;
+  grid-template-areas:
+    "wc uwc"
+    "uw uw";
+  grid-gap: 0rem;
+
   width: 100%;
   max-width: 600px;
-  flex-basis: 200px;
-  flex-grow: 1;
-  flex-shrink: 0;
+}
+
+.word-count {
+  grid-area: wc;
+  text-align: center;
+  align-self: center;
   padding: 1rem;
+  margin: 0;
+}
+
+.unique-word-count {
+  grid-area: uwc;
+  text-align: center;
+  align-self: center;
+  padding: 1rem;
+  margin: 0;
+}
+
+.unique-words {
+  grid-area: uw;
+  align-self: self-start;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* =================
@@ -125,8 +158,8 @@ body {
 }
 
 .story-input {
-  border: solid 2px;
-  border-radius: 5px;
+  border: solid 1px;
+  border-radius: 0.25rem;
   border-color: var(--clr-light);
 
   background-color: var(--clr-dark);
@@ -148,8 +181,15 @@ textarea:focus {
 }
 
 .word-counts {
-  border: solid 2px;
+  border: solid 1px;
   border-radius: 0.25rem;
+  border-color: var(--clr-light);
+}
+
+.word-count {
+  border-right: solid 1px;
+  border-bottom: solid 1px;
+  border-radius: 0px 0px 0.25rem 0px;
   border-color: var(--clr-light);
 }
 

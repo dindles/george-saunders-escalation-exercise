@@ -53,9 +53,7 @@ function getWordCount(words) {
 }
 
 function displayWordCount(wordCount) {
-  document.getElementById(
-    "word-count"
-  ).innerHTML = `word count is: ${wordCount}`;
+  document.getElementById("word-count").innerHTML = `${wordCount}`;
 }
 
 function getUniqueWordCount(uniqueWords) {
@@ -63,16 +61,12 @@ function getUniqueWordCount(uniqueWords) {
 }
 
 function displayUniqueWordCount(uniqueWordCount) {
-  document.getElementById(
-    "unique-word-count"
-  ).innerHTML = `unique word count is: ${uniqueWordCount}`;
+  document.getElementById("unique-word-count").innerHTML = `${uniqueWordCount}`;
 }
 
 function displayUniqueWords(uniqueWords) {
   const uniqueWordsString = [...uniqueWords].join(" ");
-  document.getElementById(
-    "unique-words"
-  ).innerHTML = `unique words: ${uniqueWordsString}`;
+  document.getElementById("unique-words").innerHTML = `${uniqueWordsString}`;
 }
 
 function updateMain() {
