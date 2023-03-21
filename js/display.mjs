@@ -1,10 +1,19 @@
 // INTRO/STORY DISPLAY LOGIC
-
+function goButtonGo() {
+  toggle_visibility_main();
+  toggle_visibility_intro();
+}
 // go button makes textare and wordcounts visible
-
+function toggle_visibility_main() {
+  var e = document.getElementById("main");
+  e.style.display = "flex";
+}
+function toggle_visibility_intro() {
+  var e = document.getElementById("intro");
+  e.style.display = "none";
+}
 // go button makes intro para, title and go button hidden
 // go button makes thin bar appear top with clock, save and collapsible
-// https://www.w3schools.com/howto/howto_js_collapsible.asp
 // collapsible shows intro para
 
 // OTHER

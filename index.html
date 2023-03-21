@@ -20,7 +20,7 @@
       />
     </header>
 
-    <section aria-label="introduction" class="introduction">
+    <section aria-label="introduction" class="introduction" id="intro">
       <!-- The title and intro from the book -->
       <h1>The Saunders Escalation Exercise</h1>
       <p class="intro-para">
@@ -31,11 +31,13 @@
         (Let's allow plurals. So "cow" and "cows" count as the same word.)<br /><br />
         The final product is to be exactly 200 words (not 199, not 201).<br /><br />
         Ready?<br />
-        <button id="go-button" class="go-button neon">Go.</button>
+        <button id="go-button" class="go-button neon" onclick="goButtonGo();">
+          Go.
+        </button>
       </p>
     </section>
 
-    <main class="hidden">
+    <main class="hidden" id="main">
       <!-- The main text input section -->
       <section aria-label="story input" class="story-input">
         <form action="">
@@ -63,9 +65,8 @@
         Copyright George Saunders, 2021.
       </p>
     </footer>
-    <script type="module" src=".js/jquery-3.6.4.slim.min.js"></script>
     <script type="module" src="./js/wordcounts.mjs"></script>
     <script type="module" src="./js/pluralize-dindles.mjs"></script>
-    <script src="./js/display.ms"></script>
+    <script src="./js/display.mjs"></script>
   </body>
 </html>
