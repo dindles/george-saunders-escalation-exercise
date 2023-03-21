@@ -1,19 +1,29 @@
-// INTRO/STORY DISPLAY LOGIC
+// ===============
+// GO BUTTON PRESS
+// ===============
 function goButtonGo() {
   toggle_visibility_main();
-  toggle_visibility_intro();
+  // toggle_visibility_intro();
 
   setTimeout(function () {
     transition_main();
     transition_intro();
-  }, 10); // wait x ms before starting the transitions
+  }, 10);
+  // wait x ms before starting the transitions
+
+  // todo create drop-down element
+  // todo create save button
+
+  // start timer
+  startTimer();
 }
 
+// INTRO/MAIN VISIBILITY TOGGLES
 function toggle_visibility_main() {
   const e = document.getElementById("main");
   e.style.display = "flex";
   e.style.opacity = 0;
-  e.style.transform = "scale(0)";
+  // e.style.transform = "scale(0)";
 }
 
 function toggle_visibility_intro() {
@@ -32,7 +42,7 @@ function transition_main() {
     scale += 0.1;
     e.style.opacity = opacity;
     e.style.transform = "scale(" + scale + ")";
-    if (opacity >= 1 || scale >= 1) {
+    if (opacity >= 1 || scale >= 0.9) {
       clearInterval(interval);
     }
   }, 20); // animate every x ms
@@ -54,11 +64,46 @@ function transition_intro() {
   }, 10); // animate every x ms
 }
 
-// go button makes intro para, title and go button hidden
-// go button makes thin bar appear top with clock, save and collapsible
-// collapsible shows intro para
+// TODO HEADER ELEMENTS
+// function createCollapsibleIntro()
+// function createSaveButton
 
+// TIMER
+function startTimer() {
+  const timer = document.getElementById("timer");
+  displayTimer(45 * 60, timer);
+}
+
+function displayTimer(duration, timer) {
+  let time = duration,
+    minutes,
+    seconds;
+  setInterval(function () {
+    minutes = parseInt(time / 60, 10);
+    seconds = parseInt(time % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    timer.textContent = minutes + ":" + seconds;
+
+    if (--time < 0) {
+      time = duration;
+    }
+  }, 1000);
+}
+
+// =====================
+// TODO GOOD/BAD COLOUR LOGIC
+// =====================
+// Two colours: good and bad
+// Word count is good only on 200. otherwise bad.
+// Unique word count is good until 50.
+
+// =====
 // OTHER
+// =====
+
 // textarea height
 const storyText = document.getElementById("story-text");
 

@@ -1,6 +1,6 @@
-// https://github.com/plurals/pluralize
+// from https://github.com/plurals/pluralize
 // by https://github.com/blakeembrey
-// MIT license
+// license MIT
 
 /* global define */
 
