@@ -73,17 +73,18 @@ body {
   text-align: center;
 }
 
-header {
-  display: flex;
+.header-button {
+  color: #ff8e77;
+  float: right;
+}
+
+.dindles-logo {
+  float: left;
 }
 
 footer {
   margin-top: auto;
   text-align: center;
-}
-
-.dindles-logo {
-  align-self: baseline;
 }
 
 main {
@@ -148,6 +149,15 @@ textarea {
   align-self: self-start;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+/* header buttons */
+.header-button {
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+  border: none;
+  /* TODO */
+  position: relative;
 }
 
 /* =================

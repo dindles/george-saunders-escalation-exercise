@@ -16,6 +16,7 @@ function goButtonGo() {
 
   // start timer
   startTimer();
+  createHeaderButtons();
 }
 
 // INTRO/MAIN VISIBILITY TOGGLES
@@ -64,9 +65,21 @@ function transition_intro() {
   }, 10); // animate every x ms
 }
 
-// TODO HEADER ELEMENTS
-// function createCollapsibleIntro()
-// function createSaveButton
+function createHeaderButtons() {
+  const h = document.getElementById("header");
+
+  const collapseIntroButton = document.createElement("button");
+  collapseIntroButton.innerText = "◄";
+  collapseIntroButton.classList.add("header-button");
+
+  const saveButton = document.createElement("button");
+  saveButton.innerText = "save";
+  saveButton.classList.add("header-button");
+  saveButton.innerHTML = "<img src='./assets/save.png'/>";
+
+  header.appendChild(saveButton);
+  header.appendChild(collapseIntroButton);
+}
 
 // TIMER
 function startTimer() {
