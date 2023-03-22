@@ -10,7 +10,7 @@
 
   <body>
     <!-- Will include blob logo with GitHub link, style selector -->
-    <header>
+    <header id="header">
       <img
         src="./assets/blob-white-32.png"
         alt="Dindles logo"
@@ -20,22 +20,24 @@
       />
     </header>
 
-    <section aria-label="introduction" class="introduction">
+    <section aria-label="introduction" class="introduction" id="intro">
       <!-- The title and intro from the book -->
       <h1>The Saunders Escalation Exercise</h1>
-      <!-- <p class="intro-para"> -->
-      <!-- Set a timer for, let's say, forty-five minutes.<br /><br />
-          Now write a 200-word story.<br /><br />
-          BUT the trick is: you get to use only 50 words to do it.<br /><br />
-          When you hit 50 words that's it: you have to start reusing words.<br /><br />
-          (Let's allow plurals. So "cow" and "cows" count as the same word.)<br /><br />
-          The final product is to be exactly 200 words (not 199, not 201).<br /><br />
-          Ready?<br /> -->
-      <!-- <button class="go-button neon">Go.</button> -->
-      <!-- </p> -->
+      <p class="intro-para">
+        Set a timer for, let's say, forty-five minutes.<br /><br />
+        Now write a 200-word story.<br /><br />
+        BUT the trick is: you get to use only 50 words to do it.<br /><br />
+        When you hit 50 words that's it: you have to start reusing words.<br /><br />
+        (Let's allow plurals. So "cow" and "cows" count as the same word.)<br /><br />
+        The final product is to be exactly 200 words (not 199, not 201).<br /><br />
+        Ready?<br />
+        <button id="go-button" class="go-button neon" onclick="goButtonGo();">
+          Go.
+        </button>
+      </p>
     </section>
 
-    <main>
+    <main id="main">
       <!-- The main text input section -->
       <section aria-label="story input" class="story-input">
         <form action="">
@@ -43,27 +45,28 @@
             id="story-text"
             name="story"
             rows="20"
-            placeholder="Please type here ..."
+            placeholder="Type here ..."
           ></textarea>
         </form>
       </section>
       <!-- ========================== -->
       <!-- This will comprise the running word count, unique word count and list of unique words -->
       <section aria-label="word counts" class="word-counts">
-        <p id="word-count"></p>
-        <p id="unique-word-count"></p>
-        <p id="unique-words"></p>
+        <p class="word-count" id="word-count"></p>
+        <p class="unique-word-count" id="unique-word-count"></p>
+        <p class="unique-words" id="unique-words"></p>
       </section>
+      <p id="timer"></p>
     </main>
 
     <!-- Attribution -->
     <footer>
       <p>
         Excerpt from <i>A Swim in a Pond in the Rain</i>, George Saunders, 2021.
-        Copyright George Saunders, 2021.
       </p>
     </footer>
-    <script src="./js/wordcounts.js"></script>
-    <script src="./js/display.js"></script>
+    <script type="module" src="./js/wordcounts.mjs"></script>
+    <script type="module" src="./js/pluralize-dindles.mjs"></script>
+    <script src="./js/display.mjs"></script>
   </body>
 </html>
