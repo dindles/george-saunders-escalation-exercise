@@ -27,12 +27,12 @@ function toggle_visibility_main() {
   // e.style.transform = "scale(0)";
 }
 
-function toggle_visibility_intro() {
-  const e = document.getElementById("intro");
-  e.style.display = "block";
-  e.style.opacity = 1;
-  e.style.transform = "scale(1)";
-}
+// function toggle_visibility_intro() {
+//   const e = document.getElementById("intro");
+//   e.style.display = "block";
+//   e.style.opacity = 1;
+//   e.style.transform = "scale(1)";
+// }
 
 function transition_main() {
   const e = document.getElementById("main");
@@ -65,17 +65,33 @@ function transition_intro() {
   }, 10); // animate every x ms
 }
 
+// CREATE SAVE AND INTRO HEADER BUTTONS
 function createHeaderButtons() {
-  const h = document.getElementById("header");
-
   const collapseIntroButton = document.createElement("button");
   collapseIntroButton.innerText = "◄";
   collapseIntroButton.classList.add("header-button");
+  collapseIntroButton.setAttribute("id", "intro-collapsible");
+  // collapseIntroButton.addEventListener("click", expandCollapseIntro());
 
   const saveButton = document.createElement("button");
   saveButton.innerText = "save";
   saveButton.classList.add("header-button");
   saveButton.innerHTML = "<img src='./assets/pixil-save-icon.png'/>";
+  saveButton.setAttribute("id", "save-button");
+  saveButton.onclick = function () {
+    if ((promptFilename = prompt("Save file as", ""))) {
+      var textBlob = new Blob([document.getElementById("story-text").value], {
+        type: "text/plain",
+      });
+      var downloadLink = document.createElement("a");
+      downloadLink.download = promptFilename;
+      downloadLink.innerHTML = "Save story";
+      downloadLink.href = window.URL.createObjectURL(textBlob);
+      downloadLink.click();
+      downloadLink = null;
+      textBlob = null;
+    }
+  };
 
   header.appendChild(saveButton);
   header.appendChild(collapseIntroButton);
@@ -128,3 +144,11 @@ function adjustTextareaHeight(storyText) {
   storyText.style.height = "auto";
   storyText.style.height = `${storyText.scrollHeight}px`;
 }
+
+// ==========
+// SAVE STORY
+// ==========
+
+// ====
+// TODO
+// function expandCollapseIntro() {}
