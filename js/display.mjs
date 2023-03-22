@@ -75,7 +75,7 @@ function createHeaderButtons() {
   const saveButton = document.createElement("button");
   saveButton.innerText = "save";
   saveButton.classList.add("header-button");
-  saveButton.innerHTML = "<img src='./assets/save.png'/>";
+  saveButton.innerHTML = "<img src='./assets/pixil-save-icon.png'/>";
 
   header.appendChild(saveButton);
   header.appendChild(collapseIntroButton);
