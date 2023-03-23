@@ -9,7 +9,6 @@
   </head>
 
   <body>
-    <!-- Will include blob logo with GitHub link, style selector -->
     <header id="header">
       <img
         src="./assets/blob-white-32.png"
@@ -22,8 +21,8 @@
 
     <div id="instructions" class="instructions">
       <p>
-        Write a 200-word story using a maximum of 50 unique words. Plural and
-        singular counts as one unique word. The timer is optional.
+        Write a 200-word story using a maximum of 50 unique words. Plurals and
+        singulars count as one unique word. The timer is just a guide.
       </p>
     </div>
 
@@ -39,7 +38,7 @@
         The final product is to be exactly 200 words (not 199, not 201).<br /><br />
         Ready?<br />
         <button id="go-button" class="go-button neon" onclick="goButtonGo();">
-          Go.
+          Go.<sup>*</sup>
         </button>
       </p>
     </section>
@@ -56,8 +55,8 @@
           ></textarea>
         </form>
       </section>
-      <!-- ========================== -->
-      <!-- This will comprise the running word count, unique word count and list of unique words -->
+
+      <!-- The running word count, unique word count and list of unique words -->
       <section aria-label="word counts" class="word-counts">
         <p class="word-count" id="word-count"></p>
         <p class="unique-word-count" id="unique-word-count"></p>
@@ -68,8 +67,9 @@
 
     <!-- Attribution -->
     <footer>
-      <p>
-        Excerpt from <i>A Swim in a Pond in the Rain</i>, George Saunders, 2021.
+      <p id="footer">
+        <sup>*</sup>Excerpt from <i>A Swim in a Pond in the Rain</i>, George
+        Saunders, 2021.
       </p>
     </footer>
     <script type="module" src="./js/wordcounts.mjs"></script>

@@ -12,6 +12,8 @@ function goButtonGo() {
   startTimer();
 
   createHeaderButtons();
+
+  hideFooter();
 }
 
 // INTRO/MAIN VISIBILITY TOGGLES
@@ -98,7 +100,7 @@ function createHeaderButtons() {
   header.appendChild(collapseInstructButton);
 }
 
-// TIMER
+// Timer
 function startTimer() {
   const timer = document.getElementById("timer");
   displayTimer(45 * 60, timer);
@@ -121,6 +123,12 @@ function displayTimer(duration, timer) {
       time = duration;
     }
   }, 1000);
+}
+
+// Hide footer
+function hideFooter() {
+  const footer = document.getElementById("footer");
+  footer.style.display = "none";
 }
 
 // =====================
