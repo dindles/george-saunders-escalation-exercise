@@ -68,6 +68,11 @@ body {
   flex-direction: column;
 }
 
+.instructions {
+  display: none;
+  text-align: center;
+}
+
 .introduction {
   display: block;
   text-align: center;

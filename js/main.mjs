@@ -3,19 +3,14 @@
 // ===============
 function goButtonGo() {
   toggle_visibility_main();
-  // toggle_visibility_intro();
 
   setTimeout(function () {
     transition_main();
     transition_intro();
-  }, 10);
-  // wait x ms before starting the transitions
+  }, 10); // wait 10 ms before starting the transitions
 
-  // todo create drop-down element
-  // todo create save button
-
-  // start timer
   startTimer();
+
   createHeaderButtons();
 }
 
@@ -24,15 +19,7 @@ function toggle_visibility_main() {
   const e = document.getElementById("main");
   e.style.display = "flex";
   e.style.opacity = 0;
-  // e.style.transform = "scale(0)";
 }
-
-// function toggle_visibility_intro() {
-//   const e = document.getElementById("intro");
-//   e.style.display = "block";
-//   e.style.opacity = 1;
-//   e.style.transform = "scale(1)";
-// }
 
 function transition_main() {
   const e = document.getElementById("main");
@@ -67,11 +54,25 @@ function transition_intro() {
 
 // CREATE SAVE AND INTRO HEADER BUTTONS
 function createHeaderButtons() {
-  const collapseIntroButton = document.createElement("button");
-  collapseIntroButton.innerText = "◄";
-  collapseIntroButton.classList.add("header-button");
-  collapseIntroButton.setAttribute("id", "intro-collapsible");
-  // collapseIntroButton.addEventListener("click", expandCollapseIntro());
+  const collapseInstructButton = document.createElement("button");
+  collapseInstructButton.innerText = "◄";
+  collapseInstructButton.classList.add("header-button");
+  collapseInstructButton.setAttribute("id", "intro-collapsible");
+
+  collapseInstructButton.onclick = function () {
+    if (collapseInstructButton.innerText === "◄") {
+      collapseInstructButton.innerText = "▼";
+    } else {
+      collapseInstructButton.innerText = "◄";
+    }
+
+    const i = document.getElementById("instructions");
+    if (window.getComputedStyle(instructions, null).display === "none") {
+      i.style.display = "block";
+    } else {
+      i.style.display = "none";
+    }
+  };
 
   const saveButton = document.createElement("button");
   saveButton.innerText = "save";
@@ -80,10 +81,10 @@ function createHeaderButtons() {
   saveButton.setAttribute("id", "save-button");
   saveButton.onclick = function () {
     if ((promptFilename = prompt("Save file as", ""))) {
-      var textBlob = new Blob([document.getElementById("story-text").value], {
+      const textBlob = new Blob([document.getElementById("story-text").value], {
         type: "text/plain",
       });
-      var downloadLink = document.createElement("a");
+      const downloadLink = document.createElement("a");
       downloadLink.download = promptFilename;
       downloadLink.innerHTML = "Save story";
       downloadLink.href = window.URL.createObjectURL(textBlob);
@@ -94,7 +95,7 @@ function createHeaderButtons() {
   };
 
   header.appendChild(saveButton);
-  header.appendChild(collapseIntroButton);
+  header.appendChild(collapseInstructButton);
 }
 
 // TIMER
@@ -144,11 +145,3 @@ function adjustTextareaHeight(storyText) {
   storyText.style.height = "auto";
   storyText.style.height = `${storyText.scrollHeight}px`;
 }
-
-// ==========
-// SAVE STORY
-// ==========
-
-// ====
-// TODO
-// function expandCollapseIntro() {}
