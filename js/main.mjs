@@ -68,11 +68,13 @@ function createHeaderButtons() {
     }
 
     const i = document.getElementById("instructions");
-    if (window.getComputedStyle(instructions, null).display === "none") {
-      i.style.display = "flex";
-    } else {
-      i.style.display = "none";
-    }
+    i.classList.toggle("show");
+
+    // if (window.getComputedStyle(instructions, null).display === "none") {
+    //   i.style.display = "flex";
+    // } else {
+    //   i.style.display = "none";
+    // }
   };
 
   const saveButton = document.createElement("button");

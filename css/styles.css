@@ -69,7 +69,7 @@ body {
 }
 
 .instructions {
-  display: none;
+  display: flex;
   text-align: center;
   justify-content: center;
 }
@@ -162,6 +162,7 @@ textarea {
 /* =================
    BORDERS & COLOURS
    ================= */
+
 body {
   background-color: var(--clr-dark);
 }
@@ -208,9 +209,24 @@ textarea:focus {
   border: none;
 }
 
-/* =============
-   SPECIAL CASES
-   ============= */
+/* ====================
+   HOVERS & TRANSITIONS
+   ==================== */
+
+/* Instructions transition */
+
+#instructions {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, height 0.5s ease;
+}
+
+#instructions.show {
+  opacity: 1;
+  height: auto;
+  transition: opacity 0.3s ease, height 0.3s ease;
+}
 
 /* NEON STYLINGS */
 /* Go button */
