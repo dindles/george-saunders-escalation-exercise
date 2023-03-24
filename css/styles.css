@@ -71,6 +71,11 @@ body {
 .instructions {
   display: none;
   text-align: center;
+  justify-content: center;
+}
+
+.instructions-para {
+  max-width: 600px;
 }
 
 .introduction {

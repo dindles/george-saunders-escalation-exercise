@@ -5,8 +5,8 @@ function goButtonGo() {
   toggle_visibility_main();
 
   setTimeout(function () {
-    transition_main();
-    transition_intro();
+    transitionIn("main");
+    transitionOut("intro");
   }, 10); // wait 10 ms before starting the transitions
 
   startTimer();
@@ -23,8 +23,8 @@ function toggle_visibility_main() {
   e.style.opacity = 0;
 }
 
-function transition_main() {
-  const e = document.getElementById("main");
+function transitionIn(element) {
+  const e = document.getElementById(element);
   let opacity = 0;
   let scale = 0;
   const interval = setInterval(function () {
@@ -38,8 +38,8 @@ function transition_main() {
   }, 20); // animate every x ms
 }
 
-function transition_intro() {
-  const e = document.getElementById("intro");
+function transitionOut(element) {
+  e = document.getElementById(element);
   let opacity = 1;
   let scale = 1;
   const interval = setInterval(function () {
@@ -56,21 +56,20 @@ function transition_intro() {
 
 // CREATE SAVE AND INTRO HEADER BUTTONS
 function createHeaderButtons() {
-  const collapseInstructButton = document.createElement("button");
-  collapseInstructButton.innerText = "◄";
-  collapseInstructButton.classList.add("header-button");
-  collapseInstructButton.setAttribute("id", "intro-collapsible");
+  const InstructButton = document.createElement("button");
+  InstructButton.innerText = "◄";
+  InstructButton.classList.add("header-button");
 
-  collapseInstructButton.onclick = function () {
-    if (collapseInstructButton.innerText === "◄") {
-      collapseInstructButton.innerText = "▼";
+  InstructButton.onclick = function () {
+    if (InstructButton.innerText === "◄") {
+      InstructButton.innerText = "▼";
     } else {
-      collapseInstructButton.innerText = "◄";
+      InstructButton.innerText = "◄";
     }
 
     const i = document.getElementById("instructions");
     if (window.getComputedStyle(instructions, null).display === "none") {
-      i.style.display = "block";
+      i.style.display = "flex";
     } else {
       i.style.display = "none";
     }
@@ -97,7 +96,7 @@ function createHeaderButtons() {
   };
 
   header.appendChild(saveButton);
-  header.appendChild(collapseInstructButton);
+  header.appendChild(InstructButton);
 }
 
 // Timer
