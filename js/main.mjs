@@ -16,7 +16,7 @@ function goButtonGo() {
   hideFooter();
 }
 
-// INTRO/MAIN VISIBILITY TOGGLES
+// GO BUTTON VISIBILITY TOGGLES
 function toggle_visibility_main() {
   const e = document.getElementById("main");
   e.style.display = "flex";
@@ -54,6 +54,11 @@ function transitionOut(element) {
   }, 10); // animate every x ms
 }
 
+function hideFooter() {
+  const footer = document.getElementById("footer");
+  footer.style.display = "none";
+}
+
 // CREATE SAVE AND INTRO HEADER BUTTONS
 function createHeaderButtons() {
   const InstructButton = document.createElement("button");
@@ -69,12 +74,6 @@ function createHeaderButtons() {
 
     const i = document.getElementById("instructions");
     i.classList.toggle("show");
-
-    // if (window.getComputedStyle(instructions, null).display === "none") {
-    //   i.style.display = "flex";
-    // } else {
-    //   i.style.display = "none";
-    // }
   };
 
   const saveButton = document.createElement("button");
@@ -101,7 +100,8 @@ function createHeaderButtons() {
   header.appendChild(InstructButton);
 }
 
-// Timer
+// TIMER
+
 function startTimer() {
   const timer = document.getElementById("timer");
   displayTimer(45 * 60, timer);
@@ -124,12 +124,6 @@ function displayTimer(duration, timer) {
       time = duration;
     }
   }, 1000);
-}
-
-// Hide footer
-function hideFooter() {
-  const footer = document.getElementById("footer");
-  footer.style.display = "none";
 }
 
 // =====================

@@ -213,6 +213,12 @@ textarea:focus {
    HOVERS & TRANSITIONS
    ==================== */
 
+/* header button hovers */
+
+.header-button:hover {
+  transform: scale(0.9);
+}
+
 /* Instructions transition */
 
 #instructions {

@@ -2,7 +2,7 @@ import { isPlural, returnSingular } from "./pluralize-dindles.mjs";
 
 const textarea = document.getElementById("story-text");
 
-// workaround - unable to convince regex in splitToArray to
+// workaround - regex in splitToArray doesn't
 // register when a new line isn't preceded by a space.
 textarea.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
@@ -19,7 +19,7 @@ function getStoryInput() {
 }
 
 function makeAlphaLower(rawText) {
-  const alphaOnly = rawText.replace(/[^a-zA-Z ]/g, "");
+  const alphaOnly = rawText.replace(/[^a-zA-Z ']/g, "");
   return alphaOnly.toLowerCase();
 }
 
@@ -73,7 +73,6 @@ function updateMain() {
   const rawText = getStoryInput();
   const textAlphaLower = makeAlphaLower(rawText);
   const words = splitToArray(textAlphaLower);
-  console.log(words);
   const wordsSingular = makeSingular(words);
   const uniqueWords = makeUnique(wordsSingular);
   const wordCount = getWordCount(words);
