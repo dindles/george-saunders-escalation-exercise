@@ -1,3 +1,5 @@
+const clrBad = getComputedStyle(document.body).getPropertyValue("--clr-bad");
+
 // ===============
 // GO BUTTON PRESS
 // ===============
@@ -100,11 +102,11 @@ function createHeaderButtons() {
   header.appendChild(InstructButton);
 }
 
-// TIMER
+// CREATE TIMER
 
 function startTimer() {
   const timer = document.getElementById("timer");
-  displayTimer(45 * 60, timer);
+  displayTimer(1 * 60, timer);
 }
 
 function displayTimer(duration, timer) {
@@ -121,17 +123,11 @@ function displayTimer(duration, timer) {
     timer.textContent = minutes + ":" + seconds;
 
     if (--time < 0) {
-      time = duration;
+      time = 0;
+      timer.style.color = clrBad;
     }
   }, 1000);
 }
-
-// =====================
-// TODO GOOD/BAD COLOUR LOGIC
-// =====================
-// Two colours: good and bad
-// Word count is good only on 200. otherwise bad.
-// Unique word count is good until 50.
 
 // =====
 // OTHER
@@ -148,3 +144,33 @@ function adjustTextareaHeight(storyText) {
   storyText.style.height = "auto";
   storyText.style.height = `${storyText.scrollHeight}px`;
 }
+
+// dark/light mode toggle
+
+const toggleSwitch = document.querySelector(
+  '.theme-switch input[type="checkbox"]'
+);
+
+const currentTheme = localStorage.getItem("theme")
+  ? localStorage.getItem("theme")
+  : null;
+
+if (currentTheme) {
+  document.documentElement.setAttribute("data-theme", currentTheme);
+
+  if (currentTheme === "dark") {
+    toggleSwitch.checked = true;
+  }
+}
+
+function switchTheme(e) {
+  if (e.target.checked) {
+    document.documentElement.setAttribute("data-theme", "dark");
+    localStorage.setItem("theme", "dark"); //add this
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light"); //add this
+  }
+}
+
+toggleSwitch.addEventListener("change", switchTheme, false);

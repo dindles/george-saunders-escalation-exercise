@@ -1,5 +1,8 @@
 import { isPlural, returnSingular } from "./pluralize-dindles.mjs";
 
+const clrGood = getComputedStyle(document.body).getPropertyValue("--clr-good");
+const clrBad = getComputedStyle(document.body).getPropertyValue("--clr-bad");
+
 const textarea = document.getElementById("story-text");
 
 // workaround - regex in splitToArray doesn't
@@ -53,7 +56,14 @@ function getWordCount(words) {
 }
 
 function displayWordCount(wordCount) {
-  document.getElementById("word-count").innerHTML = `${wordCount}`;
+  const wc = document.getElementById("word-count");
+  wc.innerHTML = `${wordCount}`;
+
+  if (wordCount == 200) {
+    wc.style.color = clrGood;
+  } else {
+    wc.style.color = clrBad;
+  }
 }
 
 function getUniqueWordCount(uniqueWords) {
@@ -61,7 +71,14 @@ function getUniqueWordCount(uniqueWords) {
 }
 
 function displayUniqueWordCount(uniqueWordCount) {
-  document.getElementById("unique-word-count").innerHTML = `${uniqueWordCount}`;
+  const uwc = document.getElementById("unique-word-count");
+  uwc.innerHTML = `${uniqueWordCount}`;
+
+  if (uniqueWordCount <= 50) {
+    uwc.style.color = clrGood;
+  } else {
+    uwc.style.color = clrBad;
+  }
 }
 
 function displayUniqueWords(uniqueWords) {
