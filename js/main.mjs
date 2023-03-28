@@ -63,6 +63,7 @@ function hideFooter() {
 function createHeaderButtons() {
   const InstructButton = document.createElement("button");
   InstructButton.innerText = "◄";
+  InstructButton.title = "toggle instructions";
   InstructButton.classList.add("header-button");
 
   InstructButton.onclick = function () {
@@ -78,6 +79,7 @@ function createHeaderButtons() {
 
   const saveButton = document.createElement("button");
   saveButton.innerText = "save";
+  saveButton.title = "save your story";
   saveButton.classList.add("header-button");
   if (document.documentElement.getAttribute("data-theme") === "light") {
     saveButton.innerHTML = "<img src='./assets/pixil-save-icon-dark.png'/>";
