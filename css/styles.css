@@ -2,27 +2,26 @@
    COLOURS
    ======= */
 
-:root {
+/* :root {
   --clr-good: #4169e1;
   --clr-bad: #ff8e77;
-  /* --clr-back: #ffefca; */
+  --clr-back: #ffefca;
   --clr-back: #eeedff;
   --clr-front: #333;
+} */
+
+[data-theme="light"] {
+  --clr-good: #4169e1;
+  --clr-bad: #ff8e77;
+  --clr-front: #333;
+  --clr-back: #ffefca;
+  --clr-back: #eeedff;
 }
 
 [data-theme="dark"] {
   --clr-good: #4169e1;
   --clr-bad: #ff8e77;
-  --clr-front: #333;
-  /* --clr-back: #ffefca; */
-  --clr-back: #eeedff;
-}
-
-[data-theme="light"] {
-  --clr-good: #4169e1;
-  --clr-bad: #ff8e77;
   --clr-back: #333;
-  /* --clr-front: #ffefca; */
   --clr-front: #eeedff;
 }
 

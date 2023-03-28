@@ -1,5 +1,3 @@
-const clrBad = getComputedStyle(document.body).getPropertyValue("--clr-bad");
-
 // ===============
 // GO BUTTON PRESS
 // ===============
@@ -81,7 +79,12 @@ function createHeaderButtons() {
   const saveButton = document.createElement("button");
   saveButton.innerText = "save";
   saveButton.classList.add("header-button");
-  saveButton.innerHTML = "<img src='./assets/pixil-save-icon.png'/>";
+  if (document.documentElement.getAttribute("data-theme") === "light") {
+    saveButton.innerHTML = "<img src='./assets/pixil-save-icon-dark.png'/>";
+  } else {
+    saveButton.innerHTML = "<img src='./assets/pixil-save-icon-light.png'/>";
+  }
+
   saveButton.setAttribute("id", "save-button");
   saveButton.onclick = function () {
     if ((promptFilename = prompt("Save file as", ""))) {
@@ -106,7 +109,7 @@ function createHeaderButtons() {
 
 function startTimer() {
   const timer = document.getElementById("timer");
-  displayTimer(1 * 60, timer);
+  displayTimer(45 * 60, timer);
 }
 
 function displayTimer(duration, timer) {
@@ -133,7 +136,7 @@ function displayTimer(duration, timer) {
 // OTHER
 // =====
 
-// textarea height
+// make textarea height depend on contents
 const storyText = document.getElementById("story-text");
 
 storyText.addEventListener("input", () => {
@@ -145,8 +148,23 @@ function adjustTextareaHeight(storyText) {
   storyText.style.height = `${storyText.scrollHeight}px`;
 }
 
-// dark/light mode toggle
+// DARK/LIGHT THEME TOGGLE
 
+// display logo according to colour theme
+document.addEventListener("DOMContentLoaded", function () {
+  displayLogo();
+});
+
+function displayLogo() {
+  const l = document.getElementById("logo");
+  if (document.documentElement.getAttribute("data-theme") === "light") {
+    l.src = "./assets/blob-dark-32.png";
+  } else {
+    l.src = "./assets/blob-light-32.png";
+  }
+}
+
+// theme checkbox design and logic
 const toggleSwitch = document.querySelector(
   '.theme-switch input[type="checkbox"]'
 );
@@ -158,18 +176,35 @@ const currentTheme = localStorage.getItem("theme")
 if (currentTheme) {
   document.documentElement.setAttribute("data-theme", currentTheme);
 
-  if (currentTheme === "dark") {
+  if (currentTheme === "light") {
     toggleSwitch.checked = true;
   }
 }
 
 function switchTheme(e) {
+  const logo = document.getElementById("logo");
   if (e.target.checked) {
-    document.documentElement.setAttribute("data-theme", "dark");
-    localStorage.setItem("theme", "dark"); //add this
-  } else {
     document.documentElement.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light"); //add this
+    localStorage.setItem("theme", "light");
+    logo.src = "./assets/blob-dark-32.png";
+  } else {
+    document.documentElement.setAttribute("data-theme", "dark");
+    localStorage.setItem("theme", "dark");
+    logo.src = "./assets/blob-light-32.png";
+  }
+
+  const save = document.getElementById("save-button");
+  if (save != null) {
+    console.log("save not null");
+    if (document.documentElement.getAttribute("data-theme") === "light") {
+      save.innerHTML = "<img src='./assets/pixil-save-icon-dark.png'/>";
+      console.log("save not null and theme is light");
+    } else {
+      save.innerHTML = "<img src='./assets/pixil-save-icon-light.png'/>";
+      console.log("save not null and theme is dark");
+    }
+  } else {
+    console.log("save is null");
   }
 }
 
