@@ -1,15 +1,16 @@
+/* ======
+   GLOBAL
+   ====== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* border: solid 1px; */
+}
+
 /* =======
    COLOURS
    ======= */
-
-/* :root {
-  --clr-good: #4169e1;
-  --clr-bad: #ff8e77;
-  --clr-back: #ffefca;
-  --clr-back: #eeedff;
-  --clr-front: #333;
-} */
-
 [data-theme="light"] {
   --clr-good: #4169e1;
   --clr-bad: #ff8e77;
@@ -25,21 +26,9 @@
   --clr-front: #eeedff;
 }
 
-/* ======
-   GLOBAL
-   ====== */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  /* border: solid 1px; */
-}
-
 /* ==========
    TYPOGRAPHY
    ========== */
-
 body {
   font-family: "Courier New", Courier, monospace;
   color: var(--clr-front);
@@ -76,7 +65,6 @@ footer {
 /* =========================
    DISPLAY, SIZE & ALIGNMENT
    ========================= */
-
 body {
   min-height: 100vh;
   display: flex;
@@ -143,7 +131,6 @@ textarea {
 }
 
 /* word count grid */
-
 .word-counts {
   display: grid;
   grid-template-areas:
@@ -178,10 +165,9 @@ textarea {
   padding-right: 1rem;
 }
 
-/* =================
-   BORDERS & COLOURS
-   ================= */
-
+/* ============================
+   BORDERS & COLOUR ASSIGNMENTS
+   ============================ */
 body {
   background-color: var(--clr-back);
 }
@@ -231,9 +217,7 @@ textarea:focus {
 /* ====================
    HOVERS & TRANSITIONS
    ==================== */
-
 /* header button hovers */
-
 .header-button:hover {
   transform: scale(0.9);
 }
@@ -242,8 +226,7 @@ textarea:focus {
   transform: scale(0.9);
 }
 
-/* Instructions transition */
-
+/* instructions transition */
 #instructions {
   opacity: 0;
   height: 0;
@@ -258,7 +241,7 @@ textarea:focus {
 }
 
 /* NEON STYLINGS */
-/* Go button */
+/* go button */
 .go-button.neon {
   font-size: 1.3rem;
   background-color: var(--clr-back);
@@ -269,7 +252,7 @@ textarea:focus {
   margin: 1em;
   margin-bottom: 6em;
 
-  /* two shadows; first light, second green */
+  /* two shadows; first light, second colour */
   text-shadow: 0 0 1em hsl(0 0% 100% / 0), 0 0 0.145em var(--clr-good);
 
   box-shadow: inset 0 0 0.25em var(--clr-good), 0 0 0.25em var(--clr-good);
@@ -309,6 +292,7 @@ textarea:focus {
   transition: all 100ms linear;
 }
 
+/* hover behaviour */
 .go-button.neon:hover,
 .go-button.neon:focus {
   text-shadow: 0 0 0.225em hsl(0 0% 100% / 0.2), 0 0 0.2em var(--clr-good);
@@ -324,6 +308,7 @@ textarea:focus {
   opacity: 0.4;
 }
 
+/* active behaviour */
 .go-button.neon:active {
   color: var(--clr-back);
   border-color: var(--clr-front);
@@ -344,7 +329,6 @@ textarea:focus {
 }
 
 /* COLOUR MODE TOGGLE SWITCH */
-
 .theme-switch {
   float: right;
   height: 16px;

@@ -7,7 +7,7 @@ function goButtonGo() {
   setTimeout(function () {
     transitionIn("main");
     transitionOut("intro");
-  }, 10); // wait 10 ms before starting the transitions
+  }, 10); // wait x ms before starting the transitions
 
   startTimer();
 
@@ -49,7 +49,7 @@ function transitionOut(element) {
     e.style.transform = "scale(" + scale + ")";
     if (opacity <= 0 || scale <= 0) {
       clearInterval(interval);
-      e.style.display = "none"; // hide element when transition is complete
+      e.style.display = "none";
     }
   }, 10); // animate every x ms
 }
@@ -108,7 +108,6 @@ function createHeaderButtons() {
 }
 
 // CREATE TIMER
-
 function startTimer() {
   const timer = document.getElementById("timer");
   displayTimer(45 * 60, timer);
@@ -137,8 +136,7 @@ function displayTimer(duration, timer) {
 // =====
 // OTHER
 // =====
-
-// make textarea height depend on contents
+// TEXTAREA HEIGHT DEPENDENT ON CONTENTS
 const storyText = document.getElementById("story-text");
 
 storyText.addEventListener("input", () => {
@@ -150,8 +148,7 @@ function adjustTextareaHeight(storyText) {
   storyText.style.height = `${storyText.scrollHeight}px`;
 }
 
-// DARK/LIGHT THEME TOGGLE
-
+// DARK/LIGHT THEME
 // display logo according to colour theme
 document.addEventListener("DOMContentLoaded", function () {
   displayLogo();
