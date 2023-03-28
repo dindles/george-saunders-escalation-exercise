@@ -11,6 +11,7 @@
   <body>
     <header id="header">
       <img
+        title="dindles home page"
         alt="Dindles logo"
         class="dindles-logo"
         id="logo"
@@ -18,7 +19,11 @@
         height="20"
       />
       <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
+        <label
+          title="colour theme selector"
+          class="theme-switch"
+          for="checkbox"
+        >
           <input type="checkbox" id="checkbox" />
           <div class="slider round"></div>
         </label>
@@ -44,7 +49,12 @@
         (Let's allow plurals. So "cow" and "cows" count as the same word.)<br /><br />
         The final product is to be exactly 200 words (not 199, not 201).<br /><br />
         Ready?<br />
-        <button id="go-button" class="go-button neon" onclick="goButtonGo();">
+        <button
+          title="click to start timer and open text input"
+          id="go-button"
+          class="go-button neon"
+          onclick="goButtonGo();"
+        >
           Go.
         </button>
       </p>
@@ -55,6 +65,7 @@
       <section aria-label="story input" class="story-input">
         <form action="">
           <textarea
+            title="write your story here"
             id="story-text"
             name="story"
             rows="20"
@@ -65,11 +76,19 @@
 
       <!-- The running word count, unique word count and list of unique words -->
       <section aria-label="word counts" class="word-counts">
-        <p class="word-count" id="word-count"></p>
-        <p class="unique-word-count" id="unique-word-count"></p>
-        <p class="unique-words" id="unique-words"></p>
+        <p title="total word count" class="word-count" id="word-count"></p>
+        <p
+          title="unique word count"
+          class="unique-word-count"
+          id="unique-word-count"
+        ></p>
+        <p
+          title="list of unique words"
+          class="unique-words"
+          id="unique-words"
+        ></p>
       </section>
-      <p id="timer"></p>
+      <p title="45-minute timer. Ignore this if you want!" id="timer"></p>
     </main>
 
     <!-- Attribution -->

@@ -107,6 +107,10 @@ body {
   float: left;
 }
 
+.theme-switch {
+  margin-left: 5px;
+}
+
 footer {
   margin-top: auto;
   text-align: center;
@@ -231,6 +235,10 @@ textarea:focus {
 /* header button hovers */
 
 .header-button:hover {
+  transform: scale(0.9);
+}
+
+.dindles-logo:hover {
   transform: scale(0.9);
 }
 
