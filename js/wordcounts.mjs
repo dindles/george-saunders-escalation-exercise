@@ -1,8 +1,11 @@
 import { isPlural, returnSingular } from "./pluralize-dindles.mjs";
 
+const clrGood = getComputedStyle(document.body).getPropertyValue("--clr-good");
+const clrBad = getComputedStyle(document.body).getPropertyValue("--clr-bad");
+
 const textarea = document.getElementById("story-text");
 
-// workaround - unable to convince regex in splitToArray to
+// workaround - regex in splitToArray doesn't
 // register when a new line isn't preceded by a space.
 textarea.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
@@ -19,7 +22,7 @@ function getStoryInput() {
 }
 
 function makeAlphaLower(rawText) {
-  const alphaOnly = rawText.replace(/[^a-zA-Z ]/g, "");
+  const alphaOnly = rawText.replace(/[^a-zA-Z ']/g, "");
   return alphaOnly.toLowerCase();
 }
 
@@ -53,7 +56,14 @@ function getWordCount(words) {
 }
 
 function displayWordCount(wordCount) {
-  document.getElementById("word-count").innerHTML = `${wordCount}`;
+  const wc = document.getElementById("word-count");
+  wc.innerHTML = `${wordCount}`;
+
+  if (wordCount == 200) {
+    wc.style.color = clrGood;
+  } else {
+    wc.style.color = clrBad;
+  }
 }
 
 function getUniqueWordCount(uniqueWords) {
@@ -61,7 +71,14 @@ function getUniqueWordCount(uniqueWords) {
 }
 
 function displayUniqueWordCount(uniqueWordCount) {
-  document.getElementById("unique-word-count").innerHTML = `${uniqueWordCount}`;
+  const uwc = document.getElementById("unique-word-count");
+  uwc.innerHTML = `${uniqueWordCount}`;
+
+  if (uniqueWordCount <= 50) {
+    uwc.style.color = clrGood;
+  } else {
+    uwc.style.color = clrBad;
+  }
 }
 
 function displayUniqueWords(uniqueWords) {
@@ -73,7 +90,6 @@ function updateMain() {
   const rawText = getStoryInput();
   const textAlphaLower = makeAlphaLower(rawText);
   const words = splitToArray(textAlphaLower);
-  console.log(words);
   const wordsSingular = makeSingular(words);
   const uniqueWords = makeUnique(wordsSingular);
   const wordCount = getWordCount(words);
