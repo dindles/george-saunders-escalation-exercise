@@ -150,17 +150,29 @@ function adjustTextareaHeight(storyText) {
 
 // DARK/LIGHT THEME
 // display logo according to colour theme
-document.addEventListener("DOMContentLoaded", function () {
-  displayLogo();
-});
+// if (document.readyState !== "loading") {
+//   displayLogo();
+// } else {
+//   document.addEventListener("DOMContentLoaded", function () {
+//     displayLogo();
+//   });
+// }
+// displayLogo();
 
-function displayLogo() {
-  const l = document.getElementById("logo");
-  if (document.documentElement.getAttribute("data-theme") === "light") {
-    l.src = "./assets/blob-dark-32.png";
-  } else {
-    l.src = "./assets/blob-light-32.png";
-  }
+// function displayLogo() {
+//   const l = document.getElementById("logo");
+//   if (document.documentElement.getAttribute("data-theme") === "light") {
+//     l.src = "./assets/blob-dark-32.png";
+//   } else {
+//     l.src = "./assets/blob-light-32.png";
+//   }
+// }
+
+const logo = document.getElementById("logo");
+if (document.documentElement.getAttribute("data-theme") === "light") {
+  logo.src = "./assets/blob-dark-32.png";
+} else {
+  logo.src = "./assets/blob-light-32.png";
 }
 
 // theme checkbox design and logic
@@ -194,16 +206,12 @@ function switchTheme(e) {
 
   const save = document.getElementById("save-button");
   if (save != null) {
-    console.log("save not null");
     if (document.documentElement.getAttribute("data-theme") === "light") {
       save.innerHTML = "<img src='./assets/pixil-save-icon-dark.png'/>";
-      console.log("save not null and theme is light");
     } else {
       save.innerHTML = "<img src='./assets/pixil-save-icon-light.png'/>";
-      console.log("save not null and theme is dark");
     }
   } else {
-    console.log("save is null");
   }
 }
 
